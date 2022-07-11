@@ -1785,6 +1785,13 @@ var settings = {
     res.constellations.lineStyle.opacity = arrayfy(res.constellations.lineStyle.opacity);
     res.constellations.lineStyle.stroke = arrayfy(res.constellations.lineStyle.stroke);
 
+    if (cfg.httpRequestHeaders) {
+      if (!res.httpRequestHeaders) {
+        res.httpRequestHeaders = {};
+      }
+      Object.assign(res.httpRequestHeaders, cfg.httpRequestHeaders);
+    }
+
     Object.assign(globalConfig, res);
     return res; 
   }
