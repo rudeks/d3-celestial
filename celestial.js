@@ -20,11 +20,11 @@ Celestial.requestData = function (path, callback) {
   // configure XHR object
   var d3xhr = d3.json(path, null);
 
-  if (settings.httpRequestHeaders) {
+  if (cfg && cfg.httpRequestHeaders) {
     // apply HTTP request headers
-    for (var configuredHttpHeader in settings.httpRequestHeaders) {
-      if (settings.httpRequestHeaders.hasOwnProperty(configuredHttpHeader)) {
-        d3xhr.header(configuredHttpHeader, settings.httpRequestHeaders[configuredHttpHeader]);
+    for (var configuredHttpHeader in cfg.httpRequestHeaders) {
+      if (cfg.httpRequestHeaders.hasOwnProperty(configuredHttpHeader)) {
+        d3xhr.header(configuredHttpHeader, cfg.httpRequestHeaders[configuredHttpHeader]);
       }
     }
   }
