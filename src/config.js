@@ -34,6 +34,9 @@ var settings = {
   culture: "",        // Constellation lines, default "iau"
   container: "celestial-map",   // ID of parent element, e.g. div
   datapath: "data/",  // Path/URL to data files, empty = subfolder 'data'
+  httpRequestHeaders: {
+    // "Key" => HTTP request header name
+  },
   stars: {
     show: true,    // Show stars
     limit: 6,      // Show only stars brighter than limit magnitude
@@ -262,6 +265,13 @@ var settings = {
     res.constellations.lineStyle.width = arrayfy(res.constellations.lineStyle.width);
     res.constellations.lineStyle.opacity = arrayfy(res.constellations.lineStyle.opacity);
     res.constellations.lineStyle.stroke = arrayfy(res.constellations.lineStyle.stroke);
+
+    if (cfg.httpRequestHeaders) {
+      if (!res.httpRequestHeaders) {
+        res.httpRequestHeaders = {};
+      }
+      Object.assign(res.httpRequestHeaders, cfg.httpRequestHeaders);
+    }
 
     Object.assign(globalConfig, res);
     return res; 
